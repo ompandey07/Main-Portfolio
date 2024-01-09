@@ -38,7 +38,17 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="index.html"><span>Om</span>Pandey</a>
+			<a class="navbar-brand" id="mainlogo" href="index.html"><span>O<span style="color: rgb(39, 39, 170);" >m</span></span>&nbsp;Pandey</a>
+			<style>
+					#mainlogo {
+        
+        transition: transform 0.3s ease; /* Add smooth transition effect */
+    }
+
+    #mainlogo:hover {
+        transform: scale(1.1); /* Increase the scale on hover */
+    }
+			</style>
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
@@ -134,26 +144,78 @@
 				<div class="col-md-6 col-lg-6 d-flex">
 					<div class="img-about img d-flex align-items-stretch">
 						<div class="overlay"></div>
-						<div class="img d-flex align-self-stretch align-items-center"
-							style="background-image:url(images/dum2.jpg);">
+					<div class="img d-flex align-self-stretch align-items-center" style="background-image:url(images/dum2.jpg); border-bottom-left-radius: 45px; border-top-right-radius: 55px; ">
 						</div>
 					</div>
+					
 				</div>
 				<div class="col-md-6 col-lg-6 pl-md-5 py-5">
 					<div class="row justify-content-start pb-3">
 						<div class="col-md-12 heading-section ftco-animate">
 							<h1 class="big">About</h1>
 							<h2 class="mb-4">About Me</h2>
-							<p>
-								 I am Om Pandey, junior full stack developer from Nepal. Proficient in HTML, CSS, JavaScript , Python , Django etc. Committed to crafting innovative web solutions and contributing collaboratively to impactful projects.</p>
-							<ul class="about-info mt-4 px-md-0 px-2">
-								<li class="d-flex"><span>Name:</span> <span>Om Pandey</span></li>
-								<li class="d-flex"><span>Date of birth:</span> <span>June 05, 2003</span></li>
-								<li class="d-flex"><span>Address:</span> <span>Kathmandu , Nepal</span></li>
-								<li class="d-flex"><span>Zip code:</span> <span>44600</span></li>
-								<li class="d-flex"><span>Email:</span> <span>iamompandey.it@gmail.com</span></li>
-								<li class="d-flex"><span>Phone: </span> <span>+977-9863588895</span></li>
+							<div id="typed-text"></div>
+							<script>
+								document.addEventListener("DOMContentLoaded", function () {
+									const text = "I am Om Pandey, junior full stack developer from Nepal. Proficient in HTML, CSS, JavaScript, Python, Django, etc. Committed to crafting innovative web solutions and contributing collaboratively to impactful projects.";
+									const element = document.getElementById('typed-text');
+									let index = 0;
+						
+									function type() {
+										element.innerHTML += text[index];
+										index++;
+						
+										if (index < text.length) {
+											setTimeout(type, 50); // Adjust the typing speed (milliseconds per character)
+										}
+									}
+						
+									type();
+								});
+							</script>
+							  <ul class="about-info mt-4 px-md-0 px-2">
+								<li class="d-flex"><span>Name:</span> <span id="name"></span></li>
+								<li class="d-flex"><span>Date of birth:</span> <span id="dob"></span></li>
+								<li class="d-flex"><span>Address:</span> <span id="address"></span></li>
+								<li class="d-flex"><span>Zip code:</span> <span id="zip"></span></li>
+								<li class="d-flex"><span>Email:</span> <span id="email"></span></li>
+								<li class="d-flex"><span>Phone:</span> <span id="phone"></span></li>
 							</ul>
+						
+							<script>
+								document.addEventListener("DOMContentLoaded", function () {
+									const data = [
+										"Om Pandey",
+										"June 05, 2003",
+										"Kathmandu, Nepal",
+										"44600",
+										"iamompandey.it@gmail.com",
+										"+977-9863588895"
+									];
+						
+									const elements = document.querySelectorAll('.about-info li span:last-child');
+									let dataIndex = 0;
+									let charIndex = 0;
+						
+									function type() {
+										elements[dataIndex].innerHTML += data[dataIndex][charIndex];
+										charIndex++;
+						
+										if (charIndex < data[dataIndex].length) {
+											setTimeout(type, 90); // Adjust the typing speed (milliseconds per character)
+										} else {
+											dataIndex++;
+											charIndex = 0;
+						
+											if (dataIndex < data.length) {
+												setTimeout(type, 500); // Adjust the delay between items (milliseconds)
+											}
+										}
+									}
+						
+									type();
+								});
+							</script>
 						</div>
 					</div>
 					<div class="counter-wrap ftco-animate d-flex mt-md-3">
@@ -168,7 +230,7 @@
 
 	<section class="ftco-section ftco-partner">
 		<div class="container">
-			<span><i class="ri-building-2-fill" style="color: blue;"></i>&nbsp; I Work With <i class="ri-arrow-right-down-line"></i></span>
+			<span style="cursor: pointer;"><i class="ri-building-2-fill" style="color: blue; cursor: pointer;"></i>&nbsp; I Work With <i class="ri-arrow-right-down-line"></i></span>
 			<div class="row">
 				<div class="col-sm ftco-animate">
 					<!-- <a href="#" class="partner"><img src="images/axislogo.png" class="img-fluid" alt="Colorlib Template"></a> -->
@@ -230,6 +292,8 @@
 									infrastructure. From understanding the intricacies of system architecture to
 									mastering the art of network administration, I am cultivating the skills needed to
 									become a steward of the digital realm.</p>
+
+									
 							</div>
 						</div>
 						<div class="resume-wrap d-flex ftco-animate">
@@ -584,15 +648,40 @@
 
 		<style>
 			.block-20 {
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.3s ease; /* Add smooth transition effect */
-    }
-
-    .block-20:hover {
-        transform: scale(1.1); /* Increase the scale on hover */
-    }
+				position: relative;
+				overflow: hidden;
+				transition: transform 0.3s ease; /* Add smooth transition effect */
+				border-radius: 10px; /* Add border-radius for a rounded look */
+			}
+		
+			.block-20:hover {
+				transform: scale(1.1); /* Increase the scale on hover */
+				box-shadow: 0 0 20px rgba(226, 218, 218, 0.5); /* Add a subtle shadow on hover */
+			}
+		
+			.block-20::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: rgba(0, 0, 0, 0.3); /* Add a semi-transparent overlay */
+				z-index: 1; /* Ensure the overlay is above the image */
+				opacity: 0; /* Initially invisible */
+				transition: opacity 0.3s ease;
+			}
+		
+			.block-20:hover::before {
+				opacity: 1; /* Make the overlay visible on hover */
+			}
+		
+			.block-20 .text {
+				position: relative;
+				z-index: 2; /* Ensure text is above the overlay */
+			}
 		</style>
+		
 	</section>
 
 	<section class="ftco-section ftco-hireme img" style="background-image: url(images/bg_1.jpg)">
